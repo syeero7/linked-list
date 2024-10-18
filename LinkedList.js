@@ -50,4 +50,15 @@ export default class LinkedList {
     }
     return count;
   }
+
+  head() {
+    return this.#head.value || null;
+  }
+
+  tail() {
+    let lastNode = this.#head;
+
+    while (lastNode.nextNode) lastNode = lastNode.nextNode;
+    return lastNode.value || null;
+  }
 }
