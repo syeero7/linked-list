@@ -23,4 +23,20 @@ export default class LinkedList {
     }
     current.nextNode = node;
   }
+
+  prepend(value) {
+    if (value === undefined) throw new Error("Value is undefined");
+
+    const node = new Node();
+    node.value = value;
+
+    if (!this.#head) {
+      this.#head = node;
+      return;
+    }
+    const firstNode = this.#head;
+
+    this.#head = node;
+    this.#head.nextNode = firstNode;
+  }
 }
