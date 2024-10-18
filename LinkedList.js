@@ -1,0 +1,26 @@
+import Node from "./Node.js";
+
+export default class LinkedList {
+  #head;
+  constructor() {
+    this.#head = null;
+  }
+
+  append(value) {
+    if (value === undefined) throw new Error("Value is undefined");
+
+    const node = new Node();
+    node.value = value;
+
+    if (!this.#head) {
+      this.#head = node;
+      return;
+    }
+    let current = this.#head;
+
+    while (current.nextNode) {
+      current = current.nextNode;
+    }
+    current.nextNode = node;
+  }
+}
