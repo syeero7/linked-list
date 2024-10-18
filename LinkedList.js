@@ -39,4 +39,15 @@ export default class LinkedList {
     this.#head = node;
     this.#head.nextNode = firstNode;
   }
+
+  size() {
+    let current = this.#head;
+    let count = 0;
+
+    while (current) {
+      count++;
+      current = current.nextNode;
+    }
+    return count;
+  }
 }
