@@ -61,4 +61,15 @@ export default class LinkedList {
     while (lastNode.nextNode) lastNode = lastNode.nextNode;
     return lastNode.value || null;
   }
+
+  at(index) {
+    let current = this.#head;
+    let count = 0;
+
+    while (count !== index) {
+      count++;
+      current = current.nextNode;
+    }
+    return current || null;
+  }
 }
