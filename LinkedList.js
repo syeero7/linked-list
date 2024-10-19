@@ -118,4 +118,34 @@ export default class LinkedList {
     }
     return string || null;
   }
+
+  insertAt(value, index) {
+    if (index == null || this.size() < index)
+      throw new Error(`Cannot insert at ${index || null}`);
+
+    let previous = null;
+    let current = this.#head;
+    let count = 0;
+
+    while (count !== index) {
+      previous = current;
+      current = current.nextNode;
+      count++;
+    }
+    switch (index) {
+      case 0:
+        this.prepend(value);
+        break;
+      case count + 1:
+        this.append(value);
+        break;
+      case count:
+        const node = new Node();
+
+        node.value = value;
+        previous.nextNode = node;
+        node.nextNode = current;
+        break;
+    }
+  }
 }
