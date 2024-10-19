@@ -121,7 +121,7 @@ export default class LinkedList {
 
   insertAt(value, index) {
     if (index == null || this.size() < index)
-      throw new Error(`Cannot insert at ${index || null}`);
+      throw new Error(`Cannot insert at ${index || null}.`);
 
     let previous = null;
     let current = this.#head;
@@ -147,5 +147,23 @@ export default class LinkedList {
         node.nextNode = current;
         break;
     }
+  }
+
+  removeAt(index) {
+    if (!this.#head) throw new Error("The list is currently empty.");
+    if (index == null || index < 0 || this.size() < index)
+      throw new Error(`Cannot remove at ${index || null}.`);
+
+    let previous = null;
+    let current = this.#head;
+    let count = 0;
+
+    while (count !== index) {
+      previous = current;
+      current = current.nextNode;
+      count++;
+    }
+    if (index === 0) this.#head = current.nextNode;
+    if (previous) previous.nextNode = current.nextNode;
   }
 }
