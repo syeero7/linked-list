@@ -94,4 +94,16 @@ export default class LinkedList {
 
     return current.value === value;
   }
+
+  find(value) {
+    let current = this.#head;
+    if (!current) throw new Error("The list is currently empty.");
+    let count = 0;
+
+    while (current.nextNode && current.value !== value) {
+      count++;
+      current = current.nextNode;
+    }
+    return current.value === value ? count : null;
+  }
 }
