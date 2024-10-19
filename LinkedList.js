@@ -7,7 +7,7 @@ export default class LinkedList {
   }
 
   append(value) {
-    if (value === undefined) throw new Error("Value is undefined");
+    if (value === undefined) throw new Error("The value is undefined.");
 
     const node = new Node();
     node.value = value;
@@ -25,7 +25,7 @@ export default class LinkedList {
   }
 
   prepend(value) {
-    if (value === undefined) throw new Error("Value is undefined");
+    if (value === undefined) throw new Error("The value is undefined.");
 
     const node = new Node();
     node.value = value;
@@ -71,5 +71,17 @@ export default class LinkedList {
       current = current.nextNode;
     }
     return current || null;
+  }
+
+  pop() {
+    let current = this.#head;
+    if (!current) throw new Error("The list is currently empty.");
+    if (!current.nextNode) this.#head = null;
+
+    while (current.nextNode) {
+      if (!current.nextNode.nextNode) break;
+      current = current.nextNode;
+    }
+    current.nextNode = null;
   }
 }
