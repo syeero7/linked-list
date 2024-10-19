@@ -106,4 +106,16 @@ export default class LinkedList {
     }
     return current.value === value ? count : null;
   }
+
+  toString() {
+    let current = this.#head;
+    let string = "";
+
+    while (current) {
+      string += `( ${current.value} ) -> `;
+      if (!current.nextNode) string += `${current.nextNode}`;
+      current = current.nextNode;
+    }
+    return string || null;
+  }
 }
